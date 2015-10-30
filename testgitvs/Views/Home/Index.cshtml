@@ -17,12 +17,12 @@
             success: function (json) {
                 alert(json);
                 console.log(json);
-                $("#offerdisp").html("<table style='width:100%'>");
-                for (i = 0; i < json.length; i++) {
+                
+                 
 
                     //send data to template
 
-                    $("#offerdisp").html($("#displayOfferstmp").tmpl(json));
+                    $("#offerscontainer").html($("#displayOfferstmp").tmpl(json));
                    // $("#offerdisp").append("<tr colspan='2'><td colspan='2'>" + json[i].offerID +
                      //   " </td><td colspan='2'>" + json[i].Available_On + " </td><td colspan='2'>" +
                        // json[i].Contry_Name + " </td><td colspan='2'>" + json[i].Coupen_Code + " </td>" +
@@ -32,8 +32,8 @@
                          //json[i].Offer_Link + "</td></tr>");
 
 
-                }
-                $("#offerdisp").append("</table>");
+                
+                
 
                 //console.log(json.Names);
             },
@@ -48,13 +48,15 @@
 </head>
 <body>
     <div id="offerdisp">
+        <ul id="offerscontainer">
 
+        </ul>
     </div>
 
     <!-- templates -->
     <script id="displayOfferstmp" type="text/html">
-        <div>
-            <ul>
+         
+            <li>
                 ${offerID}
                 <div><img src="${Offer_Image1_Path}" /></div>
                 <div>
@@ -65,7 +67,7 @@
                 </div>
                 Coupen Code: ${Coupen_Code}
                 
-            </ul>
-        </div>
+            </li>
+        
     </script>
 </body>
