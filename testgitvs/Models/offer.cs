@@ -21,5 +21,7 @@ namespace testgitvs.Models
         public string Offer_Link { get; set; }
 
         public string Offer_Title { get; set; }
+
+        public string moreDescription { get; set; }
     }
 }
