@@ -1,1 +1,69 @@
-﻿ I'm in local
+﻿<head>
+    <title>Offers avialable </title>
+    <meta />
+    <script>
+        var baseUrl = '@Url.Content("~/")';
+    </script>
+<script>
+    //read offers
+    function readoffers() {
+        $.ajax({
+            url: baseUrl + "api/OffersApi/getOffers",
+          
+            error: function (status,error) {
+                 
+            },
+            dataType: 'json',
+            success: function (json) {
+                alert(json);
+                console.log(json);
+                $("#offerdisp").html("<table style='width:100%'>");
+                for (i = 0; i < json.length; i++) {
+
+                    //send data to template
+
+                    $("#offerdisp").html($("#displayOfferstmp").tmpl(json));
+                   // $("#offerdisp").append("<tr colspan='2'><td colspan='2'>" + json[i].offerID +
+                     //   " </td><td colspan='2'>" + json[i].Available_On + " </td><td colspan='2'>" +
+                       // json[i].Contry_Name + " </td><td colspan='2'>" + json[i].Coupen_Code + " </td>" +
+                         //"<td colspan='2'>" + json[i].Offer_Image1_Path + " </td><td colspan='2'>" +
+                         //json[i].Offer_image2_Path + " </td><td colspan='2'>" +
+                         //json[i].Offer_Title + " </td><td colspan='2'>" +
+                         //json[i].Offer_Link + "</td></tr>");
+
+
+                }
+                $("#offerdisp").append("</table>");
+
+                //console.log(json.Names);
+            },
+            type: 'GET'
+        });
+    }
+    $(document).ready(function () {
+        readoffers();
+    });
+    
+</script>
+</head>
+<body>
+    <div id="offerdisp">
+
+    </div>
+
+    <!-- templates -->
+    <script id="displayOfferstmp" type="text/html">
+        <div>
+            <ul>
+                ${offerID}
+                <div><img src="${Offer_Image1_Path}" /></div>
+                <div>
+                    ${Offer_Title}
+                </div>
+                ${offerID}
+                ${offerID}
+                
+            </ul>
+        </div>
+    </script>
+</body>
